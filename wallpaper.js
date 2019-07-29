@@ -53,7 +53,7 @@ path_to_save = "D:/Pictures/Wallpapers/WallpaperScript";
         }
       } catch (err) { }
       downloadUrl = baseUrl + "/image/" + picName
-      download(downloadUrl, savePath, () => { })
+      await download(downloadUrl, savePath, () => { })
     }
     // await page.screenshot({ path: 'example.png', });
     // })
@@ -62,9 +62,12 @@ path_to_save = "D:/Pictures/Wallpapers/WallpaperScript";
 })()
 
 function download(uri, filename, callback) {
-  request.head(uri, function (err, res, body) {
-    request(uri)
-      .pipe(fs.createWriteStream(filename))
-      .on("close", callback);
+  return new Promise(function (resolve, reject) {
+    request.head(uri, function (err, res, body) {
+      request(uri)
+        .on('error', function (err) { reject() })
+        .pipe(fs.createWriteStream(filename))
+        .on("close", () => { resolve(); callback() });
+    })
   });
 }
