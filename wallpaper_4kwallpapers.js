@@ -280,8 +280,8 @@ async function downloadWallpapers(urls, collectionPath, collectionName) {
           }
           
           if (attempts < maxAttempts) {
-            console.log(`⏳ Waiting 0.5 seconds before retry...`);
-            await new Promise(resolve => setTimeout(resolve, 500));
+            console.log(`⏳ Waiting 3 seconds before retry...`);
+            await new Promise(resolve => setTimeout(resolve, 3000));
           }
         }
       }
