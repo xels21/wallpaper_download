@@ -10,7 +10,9 @@ global.appRoot = path.resolve(__dirname);
 
 // function main() {
 const baseUrl = "https://wallpaperscraft.com";
-const startUrl = baseUrl + "/all/ratings/3840x2160/page";
+
+const startUrl = baseUrl + "/all/downloads/3840x2160/page";
+// const startUrl = baseUrl + "/all/ratings/3840x2160/page";
 
 const pageCount = 100;
 
@@ -20,7 +22,7 @@ path_to_save = "D:/Pictures/Wallpapers/WallpaperScript";
   const options = {
     headless: true,
     // headless: false,
-    executablePath: "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+    executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe"
   }
   const browser = await puppeteer.launch(options);
   const page = await browser.newPage();

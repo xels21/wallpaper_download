@@ -1,0 +1,1 @@
+node ../wallpaper_4kwallpapers.js
