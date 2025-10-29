@@ -15,6 +15,9 @@ const CONFIG = {
     "windows-11-colorful-wallpapers"
   ],
   downloadPath: "D:/Pictures/Wallpapers/4kwallpapers",
+  // Set to true to download all wallpapers to a single merged folder
+  // Set to false to create separate folders for each collection
+  mergedOutput: true,
   browser: {
     headless: true,
     executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe"
@@ -181,10 +184,14 @@ async function processCollection(page, collection) {
   console.log(`\n=== Processing: ${collection} ===`);
   
   const collectionUrl = `${CONFIG.baseUrl}/${collection}/`;
-  const collectionPath = path.join(CONFIG.downloadPath, collection);
   
-  // Create collection directory
-  if (!createDirectoryIfNotExists(collectionPath)) {
+  // Determine output path based on mergedOutput setting
+  const outputPath = CONFIG.mergedOutput ? 
+    CONFIG.downloadPath : 
+    path.join(CONFIG.downloadPath, collection);
+  
+  // Create output directory
+  if (!createDirectoryIfNotExists(outputPath)) {
     console.log(`Skipping collection: ${collection} (directory creation failed)`);
     return;
   }
@@ -210,7 +217,7 @@ async function processCollection(page, collection) {
     }
     
     // Download wallpapers
-    await downloadWallpapers(urls, collectionPath, collection);
+    await downloadWallpapers(urls, outputPath, collection);
     
   } catch (err) {
     console.error(`Error processing collection ${collection}: ${err.message}`);
@@ -304,6 +311,7 @@ async function downloadWallpapers(urls, collectionPath, collectionName) {
 async function main() {
   console.log('=== 4K Wallpapers Downloader ===');
   console.log(`Collections to process: ${CONFIG.collections.length}`);
+  console.log(`Output mode: ${CONFIG.mergedOutput ? 'Merged (all in one folder)' : 'Separated (one folder per collection)'}`);
   
   // Create base directory
   if (!createDirectoryIfNotExists(CONFIG.downloadPath)) {
