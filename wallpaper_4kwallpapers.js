@@ -14,7 +14,8 @@ const CONFIG = {
     "windows-11-abstract-wallpapers",
     "windows-11-colorful-wallpapers"
   ],
-  downloadPath: "D:/Pictures/Wallpapers/4kwallpapers",
+  downloadPath: "X:/Pictures/Wallpapers/4kwallpapers",
+  // downloadPath: "D:/Pictures/Wallpapers/4kwallpapers",
   // Set to true to download all wallpapers to a single merged folder
   // Set to false to create separate folders for each collection
   mergedOutput: true,

@@ -1,0 +1,25 @@
+{
+  "name": "wallpaper_download",
+  "version": "1.0.0",
+  "description": "This repository contains scripts to download wallpapers from various sources.",
+  "homepage": "https://github.com/xels21/wallpaper_download#readme",
+  "bugs": {
+    "url": "https://github.com/xels21/wallpaper_download/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xels21/wallpaper_download.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "wallpaper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "puppeteer-core": "^24.27.0",
+    "request": "^2.88.2"
+  }
+}
