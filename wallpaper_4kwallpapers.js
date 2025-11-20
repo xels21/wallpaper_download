@@ -18,9 +18,9 @@ const CONFIG = {
     // Check if X: drive exists, if so use it, otherwise use D: drive
     try {
       fs.accessSync("X:/", fs.constants.F_OK);
-      return "X:/Pictures/Wallpapers/4kwallpapers";
-    } catch (err) {
       return "D:/Pictures/Wallpapers/4kwallpapers";
+    } catch (err) {
+      return "X:/Pictures/Wallpapers/4kwallpapers";
     }
   })(),
   // Set to true to download all wallpapers to a single merged folder
